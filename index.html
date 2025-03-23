@@ -21,8 +21,8 @@
         <p id="loginError" class="hidden">รหัสผ่านผิด</p>
         <input type="text" id="username" placeholder="Username">
         <input type="password" id="password" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <button onclick="showResetForm()">Reset Password</button>
+        <button onclick="login()">เข้าสู่ระบบ</button>
+        <button onclick="showResetForm()">ลืมรหัส</button>
     </div>
     
     <div class="container hidden" id="resetForm">
@@ -49,7 +49,7 @@
             if (username === storedUsername && password === storedPassword) {
                 alert("Login Successful!");
                 loginError.classList.add('hidden');
-                window.location.href = "rickroll.html"; // URL
+                window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; // URL
             } else {
                 loginError.classList.remove('hidden');
             }
