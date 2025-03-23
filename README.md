@@ -1,2 +1,2 @@
-# MEMEV2
-MEME V2
+# MEME
+V 2
