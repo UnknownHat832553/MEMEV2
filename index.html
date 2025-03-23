@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Reset Password</title>
+    <link rel="icon" href="logo.png">
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        .container { max-width: 300px; margin: auto; }
+        .hidden { display: none; }
+        input { width: 100%; margin: 5px 0; padding: 8px; }
+        button { width: 100%; padding: 10px; margin-top: 10px; }
+        #errorMessage, #loginError { color: red;}
+    </style>
+</head>
+<body>
+
+    <div class="container" id="loginForm">
+        <h2>Login</h2>
+        <p id="loginError" class="hidden">รหัสผ่านผิด</p>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <button onclick="showResetForm()">Reset Password</button>
+    </div>
+    
+    <div class="container hidden" id="resetForm">
+        <h2>Reset Password</h2>
+        <p id="errorMessage">กรอก "รหัสผ่านเก่า" ของคุณเพื่อเปลี่ยนรหัส</p>
+        <input type="password" id="oldPassword" placeholder="Old Password">
+        <input type="password" id="newPassword" placeholder="New Password">
+        <button onclick="resetPassword()">Submit</button>
+    </div>
+
+    <script>
+        let storedUsername = "admin";
+        let storedPassword = "password";
+
+        function showResetForm() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('resetForm').classList.remove('hidden');
+        }
+        function login() {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            let loginError = document.getElementById('loginError');
+            
+            if (username === storedUsername && password === storedPassword) {
+                alert("Login Successful!");
+                loginError.classList.add('hidden');
+                window.location.href = "https://example.com"; // URL
+            } else {
+                loginError.classList.remove('hidden');
+            }
+        }
+        function resetPassword() {
+            let oldPass = document.getElementById('oldPassword').value;
+            let newPass = document.getElementById('newPassword').value;
+            if (oldPass === "รหัสผ่านเก่า" && newPass) {
+                storedPassword = newPass;
+                alert("Password Reset Successfully!\nNew Password: " + newPass);
+                document.getElementById('resetForm').classList.add('hidden');
+                document.getElementById('loginForm').classList.remove('hidden');
+            } else {
+                alert("Please enter the correct old password and fill in all fields!");
+            }
+        }
+    </script>
+</body>
+</html>
